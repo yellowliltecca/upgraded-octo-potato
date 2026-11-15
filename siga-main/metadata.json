@@ -1,0 +1,6 @@
+{
+  "name": "Захар — Разработка и дизайн сайтов",
+  "description": "Персональный сайт Захара (20 лет): веб-разработка, дизайн интерфейсов, зажигалка и возможность сжечь все страницы сайта.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Oswald", "Manrope", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: #000000;
+    color: #f0ede6;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: #000000;
+    overflow-x: hidden;
+  }
+}
+
+/* Hide native cursor on desktop when the lighter cursor is active */
+@media (pointer: fine) {
+  .lighter-cursor-active,
+  .lighter-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Concrete / asphalt micro-texture */
+.concrete-grain {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0),
+    radial-gradient(rgba(0, 0, 0, 0.25) 1px, transparent 0);
+  background-size: 22px 22px, 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+.concrete-grain-light {
+  background-image:
+    radial-gradient(rgba(20, 20, 18, 0.06) 1px, transparent 0),
+    radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 0);
+  background-size: 20px 20px, 13px 13px;
+  background-position: 0 0, 6px 6px;
+}
+
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1) skewX(0deg);
+  }
+  25% {
+    transform: scaleY(1.09) scaleX(0.95) skewX(-2deg);
+  }
+  50% {
+    transform: scaleY(0.94) scaleX(1.04) skewX(2.5deg);
+  }
+  75% {
+    transform: scaleY(1.06) scaleX(0.97) skewX(-1.5deg);
+  }
+}
+
+.animate-flame {
+  transform-origin: 50% 90%;
+  animation: flame-flicker 0.24s infinite ease-in-out;
+}
+
+/* Organic lifelike breathing / sway motion on characters */
+@keyframes living-sway {
+  0%, 100% {
+    transform: scale(1.035) translate3d(0px, 0px, 0) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.042) translate3d(2px, -3px, 0) rotate(0.45deg);
+  }
+  50% {
+    transform: scale(1.038) translate3d(-1.5px, -1px, 0) rotate(-0.35deg);
+  }
+  75% {
+    transform: scale(1.044) translate3d(-2px, -3.5px, 0) rotate(-0.5deg);
+  }
+}
+
+@keyframes living-sway-duo {
+  0%, 100% {
+    transform: scale(1.035) translate3d(0px, 0px, 0) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.041) translate3d(-2.5px, -2px, 0) rotate(-0.4deg);
+  }
+  65% {
+    transform: scale(1.039) translate3d(2px, -3px, 0) rotate(0.38deg);
+  }
+}
+
+.animate-living-sway {
+  will-change: transform;
+  transform-origin: 50% 65%;
+  animation: living-sway 6.8s ease-in-out infinite;
+}
+
+.animate-living-sway-duo {
+  will-change: transform;
+  transform-origin: 50% 60%;
+  animation: living-sway-duo 7.6s ease-in-out infinite;
+}
+
+@keyframes street-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-street-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: street-marquee 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flame,
+  .animate-living-sway,
+  .animate-living-sway-duo,
+  .animate-street-marquee {
+    animation: none;
+  }
+}
+
+
+/* Touch-first layout and small-screen ergonomics */
+html { scroll-padding-top: 1rem; -webkit-text-size-adjust: 100%; }
+body { min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button { min-height: 40px; }
+img, canvas, svg { max-width: 100%; }
+@media (max-width: 640px) {
+  .animate-street-marquee { animation-duration: 38s; }
+  .animate-living-sway, .animate-living-sway-duo { animation-duration: 9s; }
+  .concrete-grain, .concrete-grain-light { background-size: 28px 28px, 18px 18px; }
+  section, footer { scroll-margin-top: 12px; }
+}
+@media (pointer: coarse) {
+  .lighter-cursor-active, .lighter-cursor-active * { cursor: auto !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+}
