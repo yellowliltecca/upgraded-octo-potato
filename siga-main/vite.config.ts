@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages project sites are served from /<repository-name>/.
+    base: '/upgraded-octo-potato/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
