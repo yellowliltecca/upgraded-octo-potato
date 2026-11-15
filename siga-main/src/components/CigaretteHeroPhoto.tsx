@@ -159,7 +159,7 @@ export function CigaretteHeroPhoto({
           >
             {!imgFailed ? (
               <img
-                src="/assets/aistudio/image_e892f54f.png"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/image_e892f54f.png"
                 alt="Захар — уличный портрет с сигаретой"
                 referrerPolicy="no-referrer"
                 onError={() => setImgFailed(true)}
