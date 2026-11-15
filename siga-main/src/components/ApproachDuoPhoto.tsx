@@ -183,7 +183,7 @@ export function ApproachDuoPhoto() {
           >
             {!imgFailed ? (
               <img
-                src="/assets/aistudio/image_d379a08f.png"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/image_d379a08f.png"
                 alt="Это мы с тобой, когда у тебя отличный сайт"
                 referrerPolicy="no-referrer"
                 onError={() => setImgFailed(true)}
